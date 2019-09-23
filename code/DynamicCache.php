@@ -394,7 +394,7 @@ class DynamicCache extends Object implements Flushable
         // Forces the session to be regenerated from $_SESSION
         Session::clear_all();
         // This prevents a new user's security token from being regenerated incorrectly
-        $_SESSION['SecurityID'] = SecurityToken::getSecurityID();
+        Session::set('SecurityID', SecurityToken::getSecurityID());
 
         // Create mock Controller to for Versioned::choose_site_stage()
         $controllerObj = Injector::inst()->create('Controller');
